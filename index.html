@@ -664,7 +664,6 @@ sam(); function sam() {
                 dress_src_time++}
             else {dress_status = {str:`Поиск изображения одежды прекращен! (timeout)`, clr:"#990000"}}}};
     ctx.globalAlpha = 1;
-    //ctx.drawImage(act_dress, dist_offset+sp_anch_x, 0);
     //          DRAWING ACCS
     if(all_char[active_sp].accs != false && active_ac != 0) {
             if(act_acc.height != 0) {ctx.drawImage(act_acc, red_dist_offset+sp_anch_x, 0, red_sp_width, 1080); acc_status=false;
@@ -681,18 +680,6 @@ sam(); function sam() {
         emote_status = {str:`Поиск изображения эмоции... (${Math.floor((timeout*60 - emote_src_time)/6)/10} сек.)`, clr:"#009900"};
             emote_src_time++}
         else {emote_status = {str:`Поиск изображения эмоции прекращен! (timeout)`, clr:"#990000"}}};
-    //ctx.drawImage(act_emote, dist_offset+sp_anch_x, 0);
-    // 
-    // CATCH SPRITE IMAGEDATA
-    if(act_body.complete && act_dress.complete && act_emote.complete) {
-        //act_body.crossOrigin = "anonymous";
-        //act_dress.crossOrigin = "anonymous";
-        //act_emote.crossOrigin = "anonymous";
-        //act_acc.crossOrigin = "anonymous";
-        //sp_imagedata = ctx.getImageData(540, 0, 900, 1080);
-        //console.log("1")
-    };
-    //
     // DRAWING INFO ABOUT SPRITE
     ctx.fillStyle = "#000000"; ctx.font = "italic 40px Helvetica";
     ctx.fillText(`Персонаж: ${all_char[active_sp].name}`, 20, 120, [550]);
@@ -843,12 +830,6 @@ function dr_opacity_up() {
 function dr_opacity_down() {
     if(active_dr_opacity > 0) {active_dr_opacity--}
 };
-/*  смена тем между светлой и белой, нет фикса шрифта
-function switch_bgcolor() {
-    if(sp_bgcolor == `Светлая`) {sp_bgcolor = `Тёмная`} else {sp_bgcolor = `Светлая`}
-    updat_bgcolor();
-};
-*/
         </script>
 
         <!--@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@-->
@@ -907,14 +888,6 @@ function switch_bgcolor() {
             <font style="font-size: xx-large;"><span id="to_scale"></span></font>
             <script>updat_tscale(); function updat_tscale() {document.getElementById("to_scale").innerHTML = to_scale}</script>
         </button>
-        <!--
-        <font color="#aaaaff" style="font-size: 50px; position: absolute; left: 1450px; top: 700px;"
-            title="Переключает цвет заднего фона между светлым и тёмным.">Тема</font>
-        <button type="button" style="position: absolute; top: 760px; left: 1450px;" onclick="switch_bgcolor()">
-            <font style="font-size: xx-large;"><span id="sp_bgcolor"></span></font>
-            <script>updat_bgcolor(); function updat_bgcolor() {document.getElementById("sp_bgcolor").innerHTML = sp_bgcolor}</script>
-        </button>
-        -->
 
         <font color="#aaaaff" style="font-size: 26px; position: absolute; left: 1450px; top: 720px;">непрозр_одежды</font>
         <button type="button" style="position: absolute; top: 750px; left: 1450px;" onclick="dr_opacity_down()">
